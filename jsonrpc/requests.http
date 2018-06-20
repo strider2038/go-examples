@@ -1,0 +1,14 @@
+POST http://localhost:1234/rpc
+Content-Type: application/json
+
+{
+    "method": "HelloService.Say",
+    "params": [
+        {
+            "Who": "World"
+        }
+    ],
+    "id": 1
+}
+
+###

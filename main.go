@@ -1,11 +1,24 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/strider2038/go-examples/di"
+	"github.com/strider2038/go-examples/jsonrpc"
 )
 
 func main() {
-	runExampleDI()
+	var exampleId string
+	flag.StringVar(&exampleId, "example", "di", "id of the running example")
+	flag.Parse()
+	fmt.Println("Running example:", exampleId)
+
+	switch exampleId {
+	case "di":
+		runExampleDI()
+	case "jsonrpc":
+		jsonrpc.RunJSONRPCServer()
+	}
 }
 
 func runExampleDI() {
