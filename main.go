@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/strider2038/go-examples/di"
 	"github.com/strider2038/go-examples/jsonrpc"
+	"github.com/strider2038/go-examples/jsonrpc2"
 )
 
 func main() {
@@ -18,6 +19,8 @@ func main() {
 		runExampleDI()
 	case "jsonrpc":
 		jsonrpc.RunJSONRPCServer()
+	case "jsonrpc2":
+		jsonrpc2.RunJSONRPC2Server()
 	}
 }
 

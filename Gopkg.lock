@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/bitwurx/jrpc2"
+  packages = ["."]
+  revision = "b65bc4ce39da111a77311a3a07be21b6120ad796"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -52,6 +58,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d416cee896a7657da8dbfb068500bf18b996feb97c842b4268358fa0777e117e"
+  inputs-digest = "44d6af9e58ebe22bcf168d96b8e3a23d9f57e6bd60f8a1e81c522447938434ed"
   solver-name = "gps-cdcl"
   solver-version = 1
