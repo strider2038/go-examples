@@ -1,0 +1,28 @@
+POST http://localhost:1234/endpoint
+Content-Type: application/json; charset=utf8
+
+[
+  {
+    "id": 1,
+    "protocol": "envelope",
+    "message": {
+      "headers": {
+        "sender": "rest",
+        "receiver": "worker"
+      },
+      "body": {
+        "action": "sendEmail",
+        "email": "user@example.com"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "protocol": "log",
+    "message": {
+      "body": "Log entry"
+    }
+  }
+]
+
+###

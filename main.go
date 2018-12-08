@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/strider2038/go-examples/di"
+	"github.com/strider2038/go-examples/jsonServer"
 	"github.com/strider2038/go-examples/jsonrpc"
 	"github.com/strider2038/go-examples/jsonrpc2"
 )
@@ -21,6 +22,8 @@ func main() {
 		jsonrpc.RunJSONRPCServer()
 	case "jsonrpc2":
 		jsonrpc2.RunJSONRPC2Server()
+	case "json":
+		jsonServer.RunJsonServer()
 	}
 }
 
