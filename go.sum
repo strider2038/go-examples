@@ -1,0 +1,8 @@
+github.com/bitwurx/jrpc2 v0.0.0-20200508153510-d8310ad1baf0 h1:iGCRBObJCgF88G2LsGb8fjwkX7Eawu38vQFNznShXzE=
+github.com/bitwurx/jrpc2 v0.0.0-20200508153510-d8310ad1baf0/go.mod h1:K64+nDVvge4TqX4W97W+bmeicRpmllWtqDA5g92KfTk=
+github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
+github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/gorilla/rpc v1.2.0 h1:WvvdC2lNeT1SP32zrIce5l0ECBfbAlmrmSBsuc57wfk=
+github.com/gorilla/rpc v1.2.0/go.mod h1:V4h9r+4sF5HnzqbwIez0fKSpANP0zlYd3qR7p36jkTQ=
+github.com/mitchellh/mapstructure v1.3.1 h1:cCBH2gTD2K0OtLlv/Y5H01VQCqmlDxz30kS5Y5bqfLA=
+github.com/mitchellh/mapstructure v1.3.1/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
