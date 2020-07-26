@@ -13,6 +13,8 @@ func logf(format string, v ...interface{}) {
 }
 
 func listener(ctx context.Context, input <-chan string, wg *sync.WaitGroup) {
+	defer wg.Done()
+
 	logf("starting listener...")
 	for {
 		select {
@@ -22,7 +24,6 @@ func listener(ctx context.Context, input <-chan string, wg *sync.WaitGroup) {
 			logf("message '%s' is processed", message)
 		case <-ctx.Done():
 			logf("listener shut down...")
-			wg.Done()
 			return
 		}
 	}
@@ -30,7 +31,7 @@ func listener(ctx context.Context, input <-chan string, wg *sync.WaitGroup) {
 
 func main() {
 	ctx, stop := context.WithCancel(context.Background())
-	channel := make(chan string)
+	channel := make(chan string, 1)
 	wg := &sync.WaitGroup{}
 
 	wg.Add(1)
@@ -41,8 +42,12 @@ func main() {
 	messages := []string{"first", "second", "third"}
 	for _, message := range messages {
 		logf("sending message: %s", message)
-		channel <- message
-		logf("message '%s' is sent", message)
+		select {
+		case channel <- message:
+			logf("message '%s' is sent", message)
+		default:
+			logf("failed to send message: %s", message)
+		}
 	}
 
 	stop()
