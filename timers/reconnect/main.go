@@ -82,7 +82,7 @@ func (reconnector *ReconnectingService) reconnect(ctx context.Context) error {
 		}
 
 		ticker := time.NewTicker(timeout)
-		timeout = timeout * time.Duration(reconnector.multiplier)
+		timeout *= time.Duration(reconnector.multiplier)
 		select {
 		case <-ticker.C:
 			ticker.Stop()
