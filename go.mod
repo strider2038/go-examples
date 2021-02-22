@@ -7,4 +7,5 @@ require (
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/rpc v1.2.0
 	github.com/mitchellh/mapstructure v1.3.1
+	golang.org/x/text v0.3.5
 )
