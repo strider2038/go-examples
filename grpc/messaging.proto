@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package messaging;
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "./messaging";
+
+// to generate run command
+// protoc --go_out=. --go-grpc_out=. *.proto
+
+message UUID {
+  uint64 hi = 1;
+  uint64 lo = 2;
+}
+
+message Headers {
+  UUID id = 1;
+}
+
+message Envelope {
+  Headers headers = 1;
+  google.protobuf.Value body = 2;
+  google.protobuf.Value properties = 3;
+}
+
+message EnvelopeList {
+  repeated Envelope envelopes = 1;
+}
+
+message DispatchResult {
+  enum Status {
+    Success = 0;
+    Fail = 1;
+  }
+  Status status = 1;
+  UUID id = 2;
+  repeated string errors = 3;
+}
+
+service Messenger {
+  rpc Dispatch (Envelope) returns (DispatchResult) {
+    option (google.api.http) = {
+      post: "/dispatch"
+      body: "*"
+    };
+  }
+  rpc DispatchQueue (EnvelopeList) returns (DispatchResult) {
+    option (google.api.http) = {
+      post: "/dispatchQueue"
+      body: "*"
+    };
+  }
+}

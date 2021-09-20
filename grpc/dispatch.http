@@ -1,0 +1,8 @@
+POST http://localhost:8081/dispatch
+Content-Type: application/json
+
+{
+  "headers": {"id": {"hi": 0, "lo": 0}},
+  "body": {"key": "value"},
+  "properties": {"key": "value"}
+}
