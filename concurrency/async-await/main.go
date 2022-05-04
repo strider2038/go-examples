@@ -28,10 +28,10 @@ func main() {
 		log.Println("time elapsed:", time.Since(start))
 	}()
 
-	ctx, waiter := async.NewWaiter(context.Background())
-	findCompanies := async.Do(ctx, "acme", companyRepository.Find)
-	findProducts := async.Do(ctx, "car", productRepository.Find)
-	doError := async.Do(ctx, 0, func(ctx context.Context, in int) (int, error) {
+	ctx, waiter := async.NewCancelingWaiter(context.Background())
+	findCompanies := async.Go(ctx, "acme", companyRepository.Find)
+	findProducts := async.Go(ctx, "car", productRepository.Find)
+	doError := async.Go(ctx, 0, func(ctx context.Context, in int) (int, error) {
 		<-time.After(70 * time.Millisecond)
 		return 0, fmt.Errorf("await error")
 	})

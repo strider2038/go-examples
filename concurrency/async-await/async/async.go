@@ -27,7 +27,7 @@ func (p *Promise[V]) Get() (V, error) {
 	return p.value, p.err
 }
 
-func Do[In, Out any](ctx context.Context, input In, f Func[In, Out]) *Promise[Out] {
+func Go[In, Out any](ctx context.Context, input In, f Func[In, Out]) *Promise[Out] {
 	done := make(chan struct{})
 	p := Promise[Out]{done: done}
 	go func() {
@@ -110,20 +110,21 @@ func Then[In, Out any](ctx context.Context, p *Promise[In], f Func[In, Out]) *Pr
 	return &out
 }
 
-type ContextWaiter struct {
+type CancelingWaiter struct {
 	cancel func()
 }
 
-func NewWaiter(ctx context.Context) (context.Context, *ContextWaiter) {
+func NewCancelingWaiter(ctx context.Context) (context.Context, *CancelingWaiter) {
 	ctx, cancel := context.WithCancel(ctx)
 
-	return ctx, &ContextWaiter{cancel: cancel}
+	return ctx, &CancelingWaiter{cancel: cancel}
 }
 
-func (w *ContextWaiter) Await(waiters ...Waiter) error {
+func (w *CancelingWaiter) Await(waiters ...Waiter) error {
 	err := Await(waiters...)
 	if err != nil {
 		w.cancel()
+
 		return err
 	}
 
