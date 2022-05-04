@@ -27,7 +27,7 @@ func (p *Promise[V]) Get() (V, error) {
 	return p.value, p.err
 }
 
-func Go[In, Out any](ctx context.Context, input In, f Func[In, Out]) *Promise[Out] {
+func Go[In, Out any](ctx context.Context, f Func[In, Out], input In) *Promise[Out] {
 	done := make(chan struct{})
 	p := Promise[Out]{done: done}
 	go func() {
