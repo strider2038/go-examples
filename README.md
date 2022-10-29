@@ -1,5 +1,3 @@
-# Go lang examples
+# Golang examples
 
-## DI - dependency injection
-
-Basic service usage with dependency injection and service factory.
+Experimental zone for golang code
