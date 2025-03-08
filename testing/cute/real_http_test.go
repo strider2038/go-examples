@@ -11,7 +11,7 @@ import (
 	"github.com/ozontech/cute"
 )
 
-func Test_Single_1(t *testing.T) {
+func Test_RealHTTP(t *testing.T) {
 	cute.NewTestBuilder().
 		Title("Single test with default T").
 		Tag("single_test").
