@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTMX Table Example</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <style>
+        .pagination { margin-top: 20px; }
+        .active { font-weight: bold; color: red; }
+        table { border-collapse: collapse; margin: 20px 0; }
+        td, th { border: 1px solid #ddd; padding: 8px; }
+    </style>
+</head>
+<body>
+<input type="text"
+       name="search"
+       placeholder="Search..."
+       hx-get="/data"
+       hx-trigger="keyup changed delay:500ms"
+       hx-include="[name='page']"
+       hx-target="#table-section">
+
+<div id="table-section">
+    {{ template "table-content" . }}
+</div>
+</body>
+</html>
